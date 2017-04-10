@@ -1,0 +1,17 @@
+user: root
+group: root
+pid: /var/run/onetime/thin.pid
+timeout: 30
+wait: 30
+log: /var/log/thin.log
+max_conns: 1024
+require: []
+environment: dev
+max_persistent_conns: 512
+servers: 1
+port: {{OTS_PORT}}
+threaded: false
+no-epoll: false
+daemonize: false
+chdir: /usr/bin/onetimesecret
+tag: cloak

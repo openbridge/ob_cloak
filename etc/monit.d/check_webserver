@@ -1,0 +1,11 @@
+check process redis-server with pidfile "/var/run/onetime/redis.pid"
+      start program = "/usr/bin/redis-server /etc/onetime/redis.conf"
+      stop program = "/usr/bin/redis-cli -a ${REDIS_PASSWORD} SHUTDOWN SAVE"
+      if failed port {{REDIS_PORT}} protocol redis then restart
+      if 5 restarts within 5 cycles then timeout
+
+check process thin-server with pidfile "/var/run/onetime/thin.{{OTS_PORT}}.pid"
+      start program = "/bin/bash -c bundle exec thin -R config.ru -C /usr/bin/onetimesecret/config/thin.yaml start"
+      stop program = "/bin/bash -c bundle exec thin -R config.ru -C /usr/bin/onetimesecret/config/thin.yaml stop"
+      if failed port {{OTS_PORT}} protocol http then restart
+      if 5 restarts within 5 cycles then timeout

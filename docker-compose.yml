@@ -1,0 +1,19 @@
+version: '2'
+services:
+  cloak-001:
+    image: openbridge/cloak:latest
+    env_file:
+      - ./env/cloak.env
+    container_name: cloak-001
+    volumes:
+      - /var/run:/usr/local/bin/redis
+    ports:
+      - "80:443"
+    restart: always
+    command: bash
+    tty: true
+    ulimits:
+      nproc: 65535
+      nofile:
+          soft: 49999
+          hard: 99999

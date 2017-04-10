@@ -1,0 +1,7 @@
+https://www.cloak.sh/
+https://www.cloak.sh/about
+https://www.cloak.sh/signup
+https://www.cloak.sh/login
+https://www.cloak.sh/forgot
+https://www.cloak.sh/info/terms
+https://www.cloak.sh/info/privacy
